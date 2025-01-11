@@ -8,7 +8,7 @@ interface TimerProps {
 
 const Timer: React.FC<TimerProps> = ({ isRunning, onComplete }) => {
   const [timeLeft, setTimeLeft] = useState(30);
-  const [play] = useSound('/timer-end.mp3');
+  const [play] = useSound('/timer-end.mp3', { volume: 1.0 });
 
   useEffect(() => {
     if (!isRunning) {
@@ -16,18 +16,20 @@ const Timer: React.FC<TimerProps> = ({ isRunning, onComplete }) => {
       return;
     }
 
-    if (timeLeft === 0) {
-      play();
-      onComplete();
-      return;
-    }
-
     const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          play();
+          onComplete();
+          return 0;
+        }
+        return prev - 1;
+      });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isRunning, timeLeft, onComplete, play]);
+  }, [isRunning, onComplete, play]);
 
   return (
     <div className="text-4xl font-bold mb-4">

@@ -14,7 +14,12 @@ const AnimalGame = () => {
 
   const handleNextAnimal = () => {
     setIsTimerRunning(false);
-    setCurrentAnimalIndex((prev) => (prev + 1) % animals.length);
+    // Generate a random index different from the current one
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * animals.length);
+    } while (newIndex === currentAnimalIndex);
+    setCurrentAnimalIndex(newIndex);
   };
 
   const handleTimerComplete = () => {
