@@ -20,7 +20,7 @@ export const animals: Animal[] = [
   { id: 17, name: "Tijger", imageUrl: "/animals/tiger.jpg" },
   { id: 18, name: "Schildpad", imageUrl: "/animals/turtle.jpg" },
   { id: 19, name: "Kikker", imageUrl: "/animals/frog.jpg" },
-  { id: 20, name: "Zalm", imageUrl: "/animals/salmon.jpg" },
+  { id: 20, name: "Haai", imageUrl: "/animals/shark.jpg" },
   { id: 21, name: "Krokodil", imageUrl: "/animals/crocodile.jpg" },
   { id: 22, name: "Flamingo", imageUrl: "/animals/flamingo.jpg" },
   { id: 23, name: "Kalkoen", imageUrl: "/animals/turkey.jpg" },
